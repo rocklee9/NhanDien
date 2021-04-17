@@ -6,3 +6,4 @@ Pillow
 requests
 psutil
 Flask
+flask_cors
