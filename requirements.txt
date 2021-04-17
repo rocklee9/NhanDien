@@ -1,12 +1,11 @@
 tensorflow==2.5.0rc0
 scikit-learn
 opencv-python
-h5py
+h5py --use-feature=2020-resolver
 matplotlib
 Pillow
 requests
 psutil
 Flask
 flask_cors
-opencv-python
 opencv-python-headless
