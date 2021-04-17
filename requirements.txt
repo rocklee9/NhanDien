@@ -9,4 +9,4 @@ Flask
 flask_cors
 opencv-python
 opencv-python-headless
-tensorflow==2.4.1
+tensorflow==2.1.0
