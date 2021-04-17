@@ -7,3 +7,4 @@ requests
 psutil
 Flask
 flask_cors
+opencv-python
