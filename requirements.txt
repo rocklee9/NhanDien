@@ -8,4 +8,5 @@ requests --use-feature=2020-resolver
 psutil --use-feature=2020-resolver
 Flask --use-feature=2020-resolver
 flask_cors --use-feature=2020-resolver
+opencv-python --use-feature=2020-resolver
 opencv-python-headless --use-feature=2020-resolver
