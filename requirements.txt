@@ -1,11 +1,11 @@
 tensorflow==2.5.0rc0
-scikit-learn
-opencv-python
+scikit-learn --use-feature=2020-resolver
+opencv-python --use-feature=2020-resolver
 h5py --use-feature=2020-resolver
-matplotlib
-Pillow
-requests
-psutil
-Flask
-flask_cors
-opencv-python-headless
+matplotlib --use-feature=2020-resolver
+Pillow --use-feature=2020-resolver
+requests --use-feature=2020-resolver
+psutil --use-feature=2020-resolver
+Flask --use-feature=2020-resolver
+flask_cors --use-feature=2020-resolver
+opencv-python-headless --use-feature=2020-resolver
