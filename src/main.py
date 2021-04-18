@@ -16,7 +16,7 @@ import sys
 import os
 import argparse
 import tensorflow as tf
-import /app/src/facenet
+import facenet
 import align.detect_face
 import random
 from time import sleep
@@ -27,9 +27,6 @@ from skimage.transform import resize
 import pyimgur
 from skimage.transform import resize
 import json
-
-
-
 
 CLIENT_ID = "f43a700c4095ed6"
 
