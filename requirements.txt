@@ -1,5 +1,5 @@
-opencv-python --use-feature=2020-resolver
-opencv-python-headless --use-feature=2020-resolver
+opencv-python
+opencv-python-headless
 tensorflow-cpu==2.5.0rc0
 scikit-learn --use-feature=2020-resolver
 h5py --use-feature=2020-resolver
