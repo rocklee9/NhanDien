@@ -1,1 +1,11 @@
-opencv-python
+opencv-python --use-feature=2020-resolver
+opencv-python-headless --use-feature=2020-resolver
+tensorflow-cpu==2.5.0rc0
+scikit-learn --use-feature=2020-resolver
+h5py --use-feature=2020-resolver
+matplotlib --use-feature=2020-resolver
+Pillow --use-feature=2020-resolver
+requests --use-feature=2020-resolver
+psutil --use-feature=2020-resolver
+Flask --use-feature=2020-resolver
+flask_cors --use-feature=2020-resolver
