@@ -49,8 +49,8 @@ THRESHOLD = [0.6, 0.7, 0.7]
 FACTOR = 0.709
 IMAGE_SIZE = 182
 INPUT_IMAGE_SIZE = 160
-CLASSIFIER_PATH = 'facemodel.pkl'
-FACENET_MODEL_PATH = '20191125-012705.pb'
+CLASSIFIER_PATH = '/app/src/facemodel.pkl'
+FACENET_MODEL_PATH = '/app/src/20191125-012705.pb'
 
 
 with tf.Graph().as_default():
@@ -188,7 +188,7 @@ def train():
         with tf.Session() as sess:
             
             np.random.seed(seed=666)
-            facenet.load_model('20191125-012705.pb')
+            facenet.load_model('/app/src/20191125-012705.pb')
             
             
             #========================================================================
@@ -213,7 +213,7 @@ def train():
                 feed_dict = { images_placeholder:images, phase_train_placeholder:False }
                 emb_array[start_index:end_index,:] = sess.run(embeddings, feed_dict=feed_dict)
             
-            classifier_filename_exp = os.path.expanduser('facemodel.pkl')
+            classifier_filename_exp = os.path.expanduser('/app/src/facemodel.pkl')
 
             
             # Train classifier
