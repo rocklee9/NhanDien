@@ -316,5 +316,5 @@ def parse_arguments():
 
 # Thuc thi server
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='https://facenet123.herokuapp.com', debug = True)
     
