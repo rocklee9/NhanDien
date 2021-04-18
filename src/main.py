@@ -32,7 +32,6 @@ import json
 
 
 CLIENT_ID = "f43a700c4095ed6"
-PATH = "C:\\Users\\ADMIN\\Desktop\\anh.png"
 
 im = pyimgur.Imgur(CLIENT_ID)
 
