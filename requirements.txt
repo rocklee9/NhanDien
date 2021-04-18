@@ -1,11 +1,12 @@
+tensorflow==1.7
+scipy
+scikit-learn
 opencv-python
 opencv-python-headless
-tensorflow-cpu==2.5.0rc0
-scikit-learn --use-feature=2020-resolver
-h5py --use-feature=2020-resolver
-matplotlib --use-feature=2020-resolver
-Pillow --use-feature=2020-resolver
-requests --use-feature=2020-resolver
-psutil --use-feature=2020-resolver
-Flask --use-feature=2020-resolver
-flask_cors --use-feature=2020-resolver
+h5py
+matplotlib
+Pillow
+requests
+psutil
+Flask
+flask_cors
