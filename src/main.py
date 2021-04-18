@@ -56,7 +56,7 @@ with tf.Graph().as_default():
     sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
     with sess.as_default():
         # Load model MTCNN phat hien khuon mat
-        facenet.load_model(FACENET_MODEL_PATH)
+        src.facenet.load_model(FACENET_MODEL_PATH)
         
         # Lay tensor input va output
         images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
@@ -65,7 +65,7 @@ with tf.Graph().as_default():
         embedding_size = embeddings.get_shape()[1]
 
         # Cai dat cac mang con
-        pnet, rnet, onet = align.detect_face.create_mtcnn(sess, "align")
+        pnet, rnet, onet = src.align.detect_face.create_mtcnn(sess, "align")
 
         people_detected = set()
         person_detected = collections.Counter()
@@ -98,7 +98,7 @@ def trainning():
         gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.25)
         sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
         with sess.as_default():
-            pnet, rnet, onet = align.detect_face.create_mtcnn(sess, None)
+            pnet, rnet, onet = src.align.detect_face.create_mtcnn(sess, None)
     
     
     
@@ -111,10 +111,10 @@ def trainning():
         return retString
         
     if image.ndim == 2:
-        image = facenet.to_rgb(image)
+        image = src.facenet.to_rgb(image)
   
     image = image[:,:,0:3]
-    bounding_boxes, _ = align.detect_face.detect_face(image, MINSIZE, pnet, rnet, onet, THRESHOLD, FACTOR)
+    bounding_boxes, _ = src.align.detect_face.detect_face(image, MINSIZE, pnet, rnet, onet, THRESHOLD, FACTOR)
     nrof_faces = bounding_boxes.shape[0]
     if nrof_faces>0:
         det = bounding_boxes[:,0:4]
@@ -185,7 +185,7 @@ def train():
         with tf.Session() as sess:
             
             np.random.seed(seed=666)
-            facenet.load_model('/app/src/20191125-012705.pb')
+            src.facenet.load_model('/app/src/20191125-012705.pb')
             
             
             #========================================================================
@@ -206,7 +206,7 @@ def train():
                 start_index = i*1000
                 end_index = min((i+1)*1000, nrof_images)
                 paths_batch = list_img[start_index:end_index]
-                images = facenet.load_data(paths_batch, False, False, 160)
+                images = src.facenet.load_data(paths_batch, False, False, 160)
                 feed_dict = { images_placeholder:images, phase_train_placeholder:False }
                 emb_array[start_index:end_index,:] = sess.run(embeddings, feed_dict=feed_dict)
             
@@ -252,9 +252,9 @@ def run_video():
                 return retString
         
             if frame.ndim == 2:
-                frame = facenet.to_rgb(frame)
+                frame = src.facenet.to_rgb(frame)
             frame = frame[:,:,0:3]
-            bounding_boxes, _ = align.detect_face.detect_face(frame, MINSIZE, pnet, rnet, onet, THRESHOLD, FACTOR)
+            bounding_boxes, _ = src.align.detect_face.detect_face(frame, MINSIZE, pnet, rnet, onet, THRESHOLD, FACTOR)
 
             faces_found = bounding_boxes.shape[0]
             print(faces_found)
@@ -272,7 +272,7 @@ def run_video():
                         cropped = frame[bb[i][1]:bb[i][3], bb[i][0]:bb[i][2], :]
                         scaled = cv2.resize(cropped, (INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE),
                                             interpolation=cv2.INTER_CUBIC)
-                        scaled = facenet.prewhiten(scaled)
+                        scaled = src.facenet.prewhiten(scaled)
                         scaled_reshape = scaled.reshape(-1, INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE, 3)
                         feed_dict = {images_placeholder: scaled_reshape, phase_train_placeholder: False}
                         emb_array = sess.run(embeddings, feed_dict=feed_dict)
