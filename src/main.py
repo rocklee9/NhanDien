@@ -16,7 +16,7 @@ import sys
 import os
 import argparse
 import tensorflow as tf
-import app/src/facenet
+import /app/src/facenet
 import align.detect_face
 import random
 from time import sleep
